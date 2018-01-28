@@ -80,6 +80,15 @@ class PSUControl(octoprint.plugin.StartupPlugin,
             self._hasGPIO = True
         except (ImportError, RuntimeError):
             self._hasGPIO = False
+        if not self._hasGPIO:
+            try:
+                global GPIO
+                import OPi.GPIO as GPIO
+                import orangepi.pc
+                GPIO.BOARD = orangepi.pc.BOARD
+                self._hasGPIO = True
+            except (ImportError, RuntimeError):
+                self._hasGPIO = False
 
         self._pin_to_gpio_rev1 = [-1, -1, -1, 0, -1, 1, -1, 4, 14, -1, 15, 17, 18, 21, -1, 22, 23, -1, 24, 10, -1, 9, 25, 11, 8, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 ]
         self._pin_to_gpio_rev2 = [-1, -1, -1, 2, -1, 3, -1, 4, 14, -1, 15, 17, 18, 27, -1, 22, 23, -1, 24, 10, -1, 9, 25, 11, 8, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 ]
