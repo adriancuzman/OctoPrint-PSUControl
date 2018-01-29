@@ -263,9 +263,9 @@ class PSUControl(octoprint.plugin.StartupPlugin,
             self._logger.error("RPi.GPIO is required.")
             return
         
-        self._logger.info("Running RPi.GPIO version %s" % GPIO.VERSION)
-        if GPIO.VERSION < "0.6":
-            self._logger.error("RPi.GPIO version 0.6.0 or greater required.")
+        #self._logger.info("Running RPi.GPIO version %s" % GPIO.VERSION)
+        #if GPIO.VERSION < "0.6":
+        #    self._logger.error("RPi.GPIO version 0.6.0 or greater required.")
         
         GPIO.setwarnings(False)
 
