@@ -74,27 +74,27 @@ class PSUControl(octoprint.plugin.StartupPlugin,
                    octoprint.plugin.SimpleApiPlugin):
 
     def __init__(self):
-        self._logger.info("init psu control")
+        print "init psu control"
         try:
-            self._logger.info("trying to find rpi.gpio")
+            print "trying to find rpi.gpio"
             global GPIO
             import RPi.GPIO as GPIO
             self._hasGPIO = True
-            self._logger.info("found rpi.gpio")
+            print "found rpi.gpio"
         except (ImportError, RuntimeError):
             self._hasGPIO = False
-            self._logger.info("failed to found rpi.gpio")
+            print "failed to found rpi.gpio"
         if not self._hasGPIO:
             try:
-                self._logger.info("trying to find OPi.GPIO")
+                print "trying to find OPi.GPIO"
                 global GPIO
                 import OPi.GPIO as GPIO
                 import orangepi.pc
                 GPIO.BOARD = orangepi.pc.BOARD
                 self._hasGPIO = True
-                self._logger.info("found Opi.GPIO")
+                print "found Opi.GPIO"
             except (ImportError, RuntimeError):
-                self._logger.info("failed to find Opi.GPIO")
+                print "failed to find Opi.GPIO"
                 self._hasGPIO = False
 
         self._pin_to_gpio_rev1 = [-1, -1, -1, 0, -1, 1, -1, 4, 14, -1, 15, 17, 18, 21, -1, 22, 23, -1, 24, 10, -1, 9, 25, 11, 8, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 ]
