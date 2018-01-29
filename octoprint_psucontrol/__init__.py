@@ -87,7 +87,6 @@ class PSUControl(octoprint.plugin.StartupPlugin,
         if not self._hasGPIO:
             try:
                 print "trying to find OPi.GPIO"
-                global GPIO
                 import OPi.GPIO as GPIO
                 import orangepi.pc
                 GPIO.BOARD = orangepi.pc.BOARD
