@@ -263,7 +263,7 @@ class PSUControl(octoprint.plugin.StartupPlugin,
         elif GPIO.getmode() == GPIO.BCM and self.GPIOMode == 'BOARD':
             return self._gpio_board_to_bcm(pin)
         else:
-            return 0
+            return pin
 
     def _configure_gpio(self):
         if not self._hasGPIO:
