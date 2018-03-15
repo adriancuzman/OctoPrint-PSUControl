@@ -327,6 +327,10 @@ class PSUControl(octoprint.plugin.StartupPlugin,
         self._check_psu_state_event.set()
 
     def _check_psu_state(self):
+        if _hasGPIO:
+            self._logger.debug("hasGPIO")
+        else:
+            self._logger.debug("doesn't have GPIO")
         while True:
             old_isPSUOn = self.isPSUOn
 
