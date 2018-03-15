@@ -75,6 +75,7 @@ class PSUControl(octoprint.plugin.StartupPlugin,
 
     def __init__(self):
         try:
+            global GPIO
             import OPi.GPIO as GPIO
             import orangepi.pc
             GPIO.BOARD = orangepi.pc.BOARD
